@@ -1,0 +1,546 @@
+    
+     
+       <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+    
+        
+<title>La Base</title>
+  
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:white;
+    font-family:Arial,sans-serif;
+}
+
+
+
+/* SPHERE */
+
+
+#sphere{
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+}
+ 
+
+
+.sphereItem{
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,-50%);
+    white-space:nowrap;
+
+}
+
+
+#openTime {
+   
+ position: fixed;
+    bottom: 2px;
+    right: 5px;
+    font-size: 4px;
+    color: white;
+    opacity: 0.7;
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div id="sphere"></div>
+
+  
+<script>
+
+// ======================================
+// DATA
+// ======================================
+const numbers = ["Vos niveaux de dinucléotide nicotinamide adénine sont optimaux pour une jeunesse optimale et une santé parfaite","Vous avez l’apparence et le ressenti de votre âge idéal tout en","profitant d’une santé optimale et d’une jeunesse parfaite","Vous êtes très énergique jeune et vous vous sentez merveilleusement bien dans votre corps","Vos cellules sont totalement libérées des toxines et des radiations électromagnétiques","Votre absorption de l’oxygène et des nutriments est améliorée","Vous vous réveillez toujours heureux parfaitement reposé et plein d’énergie","Votre capacité de gestion du temps est exceptionnel","Tous vos blocages se libèrent facilement","Votre véritable potentiel se développe pleinement et en toute sécurité","Votre système immunitaire est extrêmement efficace","Vous gérez chaque situation avec patience sérénité et succès","Toutes vos résistances et tous vos attachements se dissolvent naturellement","Votre cerveau est idéalement sain et vos capacités cognitives sont optimales","Votre corps votre esprit et votre âme sont complètement revitalisés et rajeunis","Vous surmontez chaque situation avec grâce harmonie et succès","Vos pensées vos sentiments et vos émotions sont complètement purifiés","Votre subconscient et votre corps tout entier sont complètement purifiés","Toutes les bactéries bénéfiques de votre organisme sont parfaitement restaurées et équilibrées","Vos hormones sont parfaitement équilibrées pour une santé et une jeunesse optimales","Votre système cardiovasculaire est parfaitement sain et jeune","Vous êtes totalement prêt à accueillir un changement et une transformation optimaux","Votre système reproducteur est idéalement sain et jeune","Votre système respiratoire est parfaitement sain et jeune","Votre système circulatoire est idéalement sain et jeune","Votre système endocrinien est idéalement sain et jeune","Votre système biliaire est parfaitement sain et jeune","Votre système exocrine est idéalement sain et jeune","Votre système moteur est idéalement sain et jeune","Votre système squelettique est parfaitement sain et jeune","Votre métabolisme est parfaitement sain et jeune","Votre système digestif est idéalement sain et jeune","Votre système nerveux est parfaitement sain et jeune","Vos yeux sont idéalement sains et jeunes et votre vision est parfaite","Votre vision votre odorat votre goût et votre audition sont parfaitement optimaux","Votre système tégumentaire est idéalement sain et jeune","Votre système lymphatique est parfaitement sain et jeune","Votre système rénal est idéalement sain et jeune","Votre système urinaire est parfaitement sain et jeune","Votre système musculaire est idéalement sain et jeune","Votre système immunitaire est parfaitement sain et jeune","Votre système nerveux central est parfaitement sain et jeune","Votre axe surrénalien hypophysaire hypothalamique est idéalement sain et jeune","Vos niveaux de Nicotinamide Mononucléotide sont optimaux pour un métabolisme idéal","Vous acceptez facilement toutes les affirmations bénéfiques alignées avec vos désirs","Votre absorption de l’oxygène et votre élimination du dioxyde de carbone sont optimisées","Votre thyroïde est saine et sécrète des niveaux optimaux de thyroxine","Vous reconnaissez et acceptez uniquement les changements que vous désirez","Vous recevez tous les bienfaits souhaités de l’Ormus ou de l’or monoatomique","Vos niveaux de vitamines minéraux micronutriments macronutriments antioxydants et","nutriments essentiels sont parfaitement optimaux","Vous bénéficiez également de tous les avantages associés à des niveaux optimaux de nutriments","Votre santé est parfaite votre jeunesse est rayonnante et","vous vous sentez immédiatement heureux rafraîchi et renouvelé","Votre système immunitaire inné adaptatif et passif est parfaitement sain et jeune","Tous vos organes sont revitalisés et rajeunis dans un état parfait de santé de sécurité et de jeunesse","Vos niveaux de Nicotinamide Mononucléotide sont optimaux pour une jeunesse parfaite et une santé idéale","Vous absorbez produisez stockez et"," utilisez parfaitement tous les nutriments nécessaires à votre santé et à votre jeunesse","Votre vision est parfaitement saine","Vos yeux guérissent naturellement et harmonieusement de tous les troubles oculaires","Votre vision de jour comme de nuit est améliorée","Vos yeux correspondent parfaitement à votre idéal de jeunesse","Vos yeux sont beaux attirants et lumineux","Votre sclère est d’un blanc éclatant","Votre vue est excellente","Vous percevez facilement chaque détail aussi infime soit-il","Vous distinguez une gamme de couleurs beaucoup plus vaste","Vous percevez avec clarté la personnalité et les intentions des autres","Votre sclère votre cornée votre choroïde votre corps ciliaire votre iris votre pupille votre rétine votre macula","votre fovéa votre nerf optique votre disque optique votre corps vitré","votre humeur aqueuse votre canal de Schlemm votre cristallin et votre conjonctive sont parfaitement sains","Votre santé dentaire et respiratoire est parfaite","Votre maxillaire et votre mâchoire sont parfaitement alignés","Votre maxillaire et votre mâchoire sont sains harmonieux et symétriques","Vos dents sont belles saines blanches brillantes et parfaitement alignées","Votre élocution votre articulation et votre prononciation sont parfaites","Votre crâne retrouve naturellement sa forme idéale","Vos dents manquantes se régénèrent et vos tissus gingivaux se restaurent parfaitement","Votre respiration est fluide et votre haleine est fraîche et agréable","Votre visage est harmonieux équilibré et esthétique","Vos traits du visage sont parfaitement alignés","Votre sourire est beau attirant et rayonnant","Toutes les imperfections dentaires se corrigent harmonieusement","L’émail de vos dents est parfaitement reminéralisé","Votre occlusion dentaire est optimale","Votre palais est parfaitement positionné","Votre occlusion est idéale et parfaite","Tous les défauts dentaires disparaissent naturellement","Vos dents retrouvent leur intégrité et leur pleine santé","Votre attractivité naturelle est exceptionnelle","Vous vous sentez extrêmement beau jeune et rayonnant","Votre beauté est optimale et votre santé est totale","Votre système digestif retrouve rapidement son équilibre naturel","Votre tube digestif est optimal et votre transit intestinal est harmonieux","Votre microbiote est parfaitement équilibré pour une santé optimale","Votre flore intestinale est optimale et parfaitement équilibrée","Votre absorption des nutriments est améliorée et optimale","Votre système digestif est sain et parfaitement régulé","Votre perméabilité intestinale est optimale pour une santé parfaite","Vous absorbez et utilisez facilement tous les nutriments dont votre corps a besoin","Votre production d’acide gastrique est optimale","Votre esprit et votre corps sont sains équilibrés et harmonieux","Votre équilibre en acides aminés est optimal","Toutes les tensions affectant votre intestin se libèrent naturellement","Votre système digestif est sain robuste et parfaitement fonctionnel","L’équilibre entre votre acide gastrique et vos enzymes digestives est optimal","Votre chimie corporelle est idéale et votre fonction digestive est optimale"]; 
+        // ======================================
+
+const colors = [
+
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet"
+    
+];
+
+// ======================================
+// SPHERE
+// ======================================
+
+const levelCount = 33;
+
+let sphereItems = [];
+let sequenceForward = false;
+
+
+let phase = Math.PI;
+
+
+
+let colorIndex = 0;
+let previousDirection = 1;
+
+// ======================================
+// CREATE ITEM
+// ======================================
+function nextIndex(i){
+
+    return (
+        i + 1
+    ) % numbers.length;
+}
+
+function prevIndex(i){
+
+    return (
+        i - 1 +
+        numbers.length
+    ) % numbers.length;
+}
+function createTopItem(){
+
+    let newIndex;
+
+    if(
+        sphereItems.length === 0
+    ){
+
+        // Start from the LAST text
+        newIndex =
+            numbers.length - 1;
+
+    }
+    else{
+
+        newIndex =
+            prevIndex(
+                sphereItems[0].index
+            );
+    }
+
+    sphereItems.unshift({
+
+        index:
+            newIndex,
+
+        value:
+            String(
+                numbers[newIndex]
+            ),
+
+        color:
+            colors[colorIndex],
+
+        level:
+            0
+
+    });
+
+    colorIndex =
+        (colorIndex + 1)
+        %
+        colors.length;
+
+ 
+}
+
+function createBottomStartItem(){
+
+    const newIndex = 0;
+
+    sphereItems.push({
+
+        index:
+            newIndex,
+
+        value:
+            String(
+                numbers[newIndex]
+            ),
+
+        color:
+            colors[colorIndex],
+
+        level:
+            levelCount - 1
+
+    });
+
+    colorIndex =
+        (
+            colorIndex + 1
+        )
+        %
+        colors.length;
+}
+// ======================================
+// DRAW
+// ======================================
+
+
+
+function drawSphere(){
+
+    const sphere =
+        document.getElementById(
+            "sphere"
+        );
+
+    sphere.innerHTML = "";
+
+   
+    sphereItems.forEach(item => {
+
+        const div =
+            document.createElement(
+                "div"
+            );
+
+        div.className =
+            "sphereItem";
+
+        div.innerText =
+            item.value;
+
+        div.style.color =
+            item.color;
+
+      
+const lineHeight = 36;
+
+const y =
+     -10 +
+ item.level * lineHeight;
+
+
+        div.style.top =
+            y + "px";
+
+        div.style.left =
+            "50%";
+
+        div.style.transform =
+            "translate(-50%,-50%)";
+
+        const length =
+            String(
+                item.value
+            ).length;
+
+        const fontSize =
+            Math.max(
+              
+           
+
+  18,
+        36 - length * 0.5
+
+
+            );
+
+      div.style.fontSize = "24px";
+// div.style.fontSize =
+ //           fontSize + "px";
+       sphere.appendChild(div);
+
+    });
+}
+
+
+
+// ======================================
+// MOVEMENT
+// ======================================
+
+
+function moveForward(step){
+
+    sphereItems.forEach(item=>{
+        item.level += step;
+    });
+
+    sphereItems =
+        sphereItems.filter(
+            item => item.level < levelCount
+        );
+
+    if(
+        sphereItems.length === 0 ||
+        sphereItems[0].level >= 1
+    ){
+        createTopItem();
+    }
+}
+
+  
+function moveBackward(step){
+
+    sphereItems.forEach(item=>{
+        item.level -= step;
+    });
+
+    sphereItems =
+        sphereItems.filter(
+            item => item.level >= 0
+        );
+
+    if(
+        sphereItems.length === 0 ||
+        sphereItems[sphereItems.length-1].level <= levelCount-2
+    ){
+
+      
+colorIndex =
+    (
+        colorIndex - 1 +
+        colors.length
+    )
+    %
+    colors.length;
+
+
+const newIndex =
+
+    sphereItems.length === 0
+    ? numbers.length - 1
+    : nextIndex(
+        sphereItems[
+            sphereItems.length - 1
+        ].index
+    );
+
+sphereItems.push({
+
+    index:
+        newIndex,
+
+    value:
+        String(
+            numbers[newIndex]
+        ),
+
+    color:
+        colors[colorIndex],
+
+    level:
+        levelCount - 1
+
+});
+
+    }
+}
+
+// ======================================
+// SINUSOID
+// ======================================
+
+let previousTimestamp = null;
+
+function loop(timestamp){
+
+    if(previousTimestamp === null){
+        previousTimestamp = timestamp;
+    }
+
+    // Real elapsed time in seconds
+    let deltaTime =
+        (timestamp - previousTimestamp) / 1000;
+
+    previousTimestamp = timestamp;
+
+    // Prevent a huge jump if the browser stalls
+    deltaTime =
+        Math.min(deltaTime, 0.05);
+
+
+const cycleDuration =  177.6043360433;
+
+
+    // Completely time-based sinusoid
+    //
+    // Math.PI / cycleDuration means:
+    // one half-wave in cycleDuration seconds
+    // one complete sine cycle in 2 * cycleDuration seconds
+
+    phase +=
+        Math.PI *
+        deltaTime  /
+        cycleDuration;
+
+
+    const wave =
+        Math.sin(phase);
+  
+
+    const direction =
+        wave >= 0
+        ? 1
+        : -1;
+
+
+    const speed =
+        Math.abs(wave);
+
+
+const minInterval = 173.441734417344; 
+const maxInterval = 346.883468834688;
+const movementScale = 2775.0677506774;
+
+    const equivalentInterval =
+        maxInterval -
+        speed *
+        (
+            maxInterval -
+            minInterval
+        );
+
+
+    // ==========================================
+    // REAL-TIME MOVEMENT
+    // ==========================================
+
+    // Original calibration was:
+    //
+    // 30 / equivalentInterval per frame
+    //
+    // At 60 FPS this corresponds to:
+    //
+    // (30 / equivalentInterval) * 60
+    // levels per second.
+
+  const movementSpeed =
+    movementScale /
+    equivalentInterval;
+
+const step =
+    movementSpeed * deltaTime;
+
+
+    if(direction > 0){
+
+        moveForward(step);
+
+    }
+    else{
+
+        moveBackward(step);
+
+    }
+
+
+    drawSphere();
+
+
+    requestAnimationFrame(
+        loop
+    );
+}
+// ======================================
+// FULLSCREEN
+// ======================================
+
+function enterFullscreen(){
+
+    if(
+      !document.fullscreenElement
+    ){
+
+        document
+        .documentElement
+        .requestFullscreen()
+        .catch(()=>{});
+    }
+}
+
+document.addEventListener(
+    "click",
+    enterFullscreen,
+    {once:true}
+);
+
+document.addEventListener(
+    "touchstart",
+    enterFullscreen,
+    {once:true}
+);
+
+// ======================================
+// START
+// ======================================
+
+window.addEventListener(
+    "load",
+    ()=>{
+keepScreenAwake();
+
+  //const openedAt = new Date();
+   // document.getElementById("openTime").textContent =
+      // openedAt.toLocaleString();    
+
+
+
+createBottomStartItem();
+drawSphere();
+
+        requestAnimationFrame(
+            loop
+        );
+    }
+);
+      
+let wakeLock = null;
+
+async function keepScreenAwake() {
+    try {
+        wakeLock = await navigator.wakeLock.request("screen");
+
+        wakeLock.addEventListener("release", () => {
+            console.log("Wake Lock released");
+        });
+
+        console.log("Screen Wake Lock active");
+
+    } catch (err) {
+        console.log("Wake Lock error:", err);
+    }
+}
+
+document.addEventListener("visibilitychange", async () => {
+
+    if (
+        wakeLock !== null &&
+        document.visibilityState === "visible"
+    ) {
+        await keepScreenAwake();
+    }
+
+});
+
+</script>
+
+</body>
+</html>        
